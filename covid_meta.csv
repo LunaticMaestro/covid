@@ -1,7 +1,8 @@
-date,time,remark,Total number of passengers screened at airport,Total number of Active COVID 2019 cases across India *,Total number of Discharged/Cured COVID 2019 cases across India *,Total number of Migrated COVID-19 Patient *,Total number of Deaths due to COVID 2019 across India *
-19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734,149,19,1,4
-19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734,149,19,1,4
-20.03.2020,09:00 AM,"(*including foreign nationals, as on 20.03.2020 at 09:00 AM)",1431734,171,19,1,4
-20.03.2020,05:00 PM,"(*including foreign nationals, as on 20.03.2020 at 05:00 PM)",1459993,196,22,1,4
-21.03.2020,09:00 AM,"(*including foreign nationals, as on 21.03.2020 at 09:00 AM)",1459993,231,22,1,4
-21.03.2020,04:45 PM,"(*including foreign nationals, as on 21.03.2020 at 04:45 PM)",1490303,256,22,1,4
+date,time,remark,Total number of passengers screened at airport,Total number of Active COVID 2019 cases across India *,Total number of Discharged/Cured COVID 2019 cases across India *,Total number of Migrated COVID-19 Patient *,Total number of Deaths due to COVID 2019 across India *,Passengers screened at airport,Active COVID 2019 cases *,Cured/discharged cases,Death cases,Migrated COVID-19 Patient
+19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734.0,149.0,19.0,1.0,4.0,,,,,
+19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734.0,149.0,19.0,1.0,4.0,,,,,
+20.03.2020,09:00 AM,"(*including foreign nationals, as on 20.03.2020 at 09:00 AM)",1431734.0,171.0,19.0,1.0,4.0,,,,,
+20.03.2020,05:00 PM,"(*including foreign nationals, as on 20.03.2020 at 05:00 PM)",1459993.0,196.0,22.0,1.0,4.0,,,,,
+21.03.2020,09:00 AM,"(*including foreign nationals, as on 21.03.2020 at 09:00 AM)",1459993.0,231.0,22.0,1.0,4.0,,,,,
+21.03.2020,04:45 PM,"(*including foreign nationals, as on 21.03.2020 at 04:45 PM)",1490303.0,256.0,22.0,1.0,4.0,,,,,
+22.03.2020,11:45 AM,"(*including foreign nationals, as on 22.03.2020 at 11:45 AM)",,,,,,1490303.0,295.0,23.0,5.0,1.0

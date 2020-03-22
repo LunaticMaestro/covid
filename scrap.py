@@ -9,8 +9,12 @@
 # STANDARDS
 #  - Date_Format  `DD-MM-YYYY`
 #  
+# VERSION 2.0
+#  -  22 MAR 2020
+#  - Source site formate changed
+# 
 # VERSION 1.0
-#  - 19 MAR 20220
+#  - 19 MAR 2020
 #  - Base program
 #  - column value hardcoded due to heterogenous data
 
@@ -39,14 +43,12 @@ except Exception as e:
 # parsing retrieved html with beautiful soup
 crude_data = BeautifulSoup(response.text, 'html.parser')
 
-
-# %%
-# Section last inspected date 19-03-2020
-section = crude_data.findAll('ol', attrs = {'dir': 'ltr'})[0]
-section
-
 # %% [markdown]
-# ![ref img: /log/screenshots](data_src_19_03_2020.png)
+# ### META INFO *snapshot*
+# ![ref img: /log/screenshots](data_src_22_03_2020.png)
+# 
+# ### STATE-WISE INFORMAITION *snapshot*
+# ![ref img: /log/screenshots](data_src_22_03_2020_2.png)
 # %% [markdown]
 # ## 1. Extracting META INFO
 # 
@@ -66,26 +68,29 @@ section
 # %%
 # Dictionary for storing set of observations
 observation = dict()
-#
-# Extracting date, time, remakrs
-meta_info  = section.findAll('p')
-meta_date_time = meta_info[-1].text     
-meta_date = re.findall("[0-3][0-9][.][0-1][0-9][.]202[0-9]", meta_date_time)    # DD-MM-YYYY formation
-meta_time = re.findall("[0-9][0-9]:[0-9][0-9] [AP]M", meta_date_time)              # 12-hours HH:MM AM/PM
-observation['date'] = meta_date
-observation['time'] = meta_time
-observation['remark'] = list()
-observation['remark'].append(meta_date_time)
-# print(observation)
 
 
 # %%
-# Extracting other informations of the META_DATA set
-meta_info = section.findAll('p')
-for info in meta_info[:-1]:
-    col, val = info.text.split(":")
+# Extracting informations of the META_DATA set
+# Block last inspected date 22-03-2020
+block = crude_data.findAll('div', attrs = {'class': 'iblock_text'})
+
+for row in block:
+    val = row.find('span').text
+    col = row.find('div').text
     observation[col.strip()] = [ int(val.replace(',', '')), ]   # indian number system uses <comma> as separated for lakh,thousands
-print(observation)
+#print(observation)
+
+
+# %%
+# Extracting date, time, remakrs
+remark = crude_data.find('div', attrs = {'class': 'content newtab'}).find('p').text
+meta_date = re.findall("[0-3][0-9][.][0-1][0-9][.]202[0-9]", remark)    # DD-MM-YYYY formation
+meta_time = re.findall("[0-9][0-9]:[0-9][0-9] [AP]M", remark)              # 12-hours HH:MM AM/PM
+observation['date'] = meta_date
+observation['time'] = meta_time
+observation['remark'] = [remark]
+#print(observation)
 
 
 # %%
@@ -96,10 +101,6 @@ try:
 except FileNotFoundError:
     print("File 'covid_meta.csv' not found. CREATING")
     df_meta = pd.DataFrame()
-
-
-# %%
-observation
 
 
 # %%
@@ -134,23 +135,13 @@ df.tail()
 # 2. Death
 
 # %%
-# Getting column names
-# Elementary check for change in table format
-header_row = section.findAll('tr')[0]
-crude_cols = header_row.findAll('th')
-columns = []
-for col in crude_cols:
-    columns.append(col.text.strip())
-if len(columns) != 6:
-    print("Expected 6 columns, got ", len(columns))
-    print("DATA INTEGRITY MISMATCH, Update Program, Exiting")
-    quit()
-#print(columns)
+rows = crude_data.find('div', attrs = {'class': 'content newtab'}).findAll('tr')
+rows[1]
 
 
 # %%
 # Extracting each observation and appending to observations
-rows = section.findAll('tr')
+rows = crude_data.find('div', attrs = {'class': 'content newtab'}).findAll('tr')
 observations = []
 for row in rows[1:-1]:    # 1st or 0th index belongs to header, last row refers to summed info (total)
     observation = {}
@@ -197,4 +188,8 @@ print("DATA : OK")
 df = pd.read_csv(file_data)
 df.set_index(['date', 'time'], inplace= True)
 df.tail()
+
+
+# %%
+
 
