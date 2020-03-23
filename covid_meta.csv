@@ -1,10 +1,12 @@
 date,time,remark,Total number of passengers screened at airport,Total number of Active COVID 2019 cases across India *,Total number of Discharged/Cured COVID 2019 cases across India *,Total number of Migrated COVID-19 Patient *,Total number of Deaths due to COVID 2019 across India *,Passengers screened at airport,Active COVID 2019 cases *,Cured/discharged cases,Death cases,Migrated COVID-19 Patient
-19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734.0,149.0,19.0,1.0,4.0,,,,,
-19.03.2020,05:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734.0,149.0,19.0,1.0,4.0,,,,,
-20.03.2020,09:00 AM,"(*including foreign nationals, as on 20.03.2020 at 09:00 AM)",1431734.0,171.0,19.0,1.0,4.0,,,,,
-20.03.2020,05:00 PM,"(*including foreign nationals, as on 20.03.2020 at 05:00 PM)",1459993.0,196.0,22.0,1.0,4.0,,,,,
-21.03.2020,09:00 AM,"(*including foreign nationals, as on 21.03.2020 at 09:00 AM)",1459993.0,231.0,22.0,1.0,4.0,,,,,
-21.03.2020,04:45 PM,"(*including foreign nationals, as on 21.03.2020 at 04:45 PM)",1490303.0,256.0,22.0,1.0,4.0,,,,,
-22.03.2020,11:45 AM,"(*including foreign nationals, as on 22.03.2020 at 11:45 AM)",,,,,,1490303.0,295.0,23.0,5.0,1.0
-22.03.2020,06:30 PM,"(*including foreign nationals, as on 22.03.2020 at 06:30 PM)",,,,,,1517327.0,329.0,23.0,7.0,1.0
-23.03.2020,09:00 AM,"(*including foreign nationals, as on 23.03.2020 at 09:00 AM)",,,,,,1517327.0,359.0,23.0,7.0,1.0
+19.03.2020,5:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734,149,19,1,4,,,,,
+19.03.2020,5:00 PM,"(*including foreign nationals, as on 19.03.2020 at 05:00 PM)",1431734,149,19,1,4,,,,,
+20.03.2020,9:00 AM,"(*including foreign nationals, as on 20.03.2020 at 09:00 AM)",1431734,171,19,1,4,,,,,
+20.03.2020,5:00 PM,"(*including foreign nationals, as on 20.03.2020 at 05:00 PM)",1459993,196,22,1,4,,,,,
+21.03.2020,9:00 AM,"(*including foreign nationals, as on 21.03.2020 at 09:00 AM)",1459993,231,22,1,4,,,,,
+21.03.2020,4:45 PM,"(*including foreign nationals, as on 21.03.2020 at 04:45 PM)",1490303,256,22,1,4,,,,,
+22.03.2020,11:45 AM,"(*including foreign nationals, as on 22.03.2020 at 11:45 AM)",,,,,,1490303,295,23,5,1
+22.03.2020,6:30 PM,"(*including foreign nationals, as on 22.03.2020 at 06:30 PM)",,,,,,1517327,329,23,7,1
+23.03.2020,9:00 AM,"(*including foreign nationals, as on 23.03.2020 at 09:00 AM)",,,,,,1517327,359,23,7,1
+23.03.2020,10:30 AM,"(*including foreign nationals, as on 23.03.2020 at 10:30 AM)",,,,,,1517327,415,23,7,1
+23.03.2020,6:00 PM,"(*including foreign nationals, as on 23.03.2020 at 06:00 PM)",,,,,,1517327,402,23,7,1
