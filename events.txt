@@ -6,5 +6,6 @@
 
 Symbols meanings
 
+# Few of the new cases have been reassigned States as per latest information 
 * State and District wise details awaited
 # 2nd Death Reported in Delhi is Covid-19 Negative

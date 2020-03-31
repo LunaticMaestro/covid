@@ -78,7 +78,10 @@ block = crude_data.findAll('div', attrs = {'class': 'iblock_text'})
 for row in block:
     val = row.find('span').text
     col = row.find('div').text
-    observation[col.strip()] = [ int(val.replace(',', '')), ]   # indian number system uses <comma> as separated for lakh,thousands
+    try:
+        observation[col.strip()] = [ int(val.replace(',', '')), ]   # indian number system uses <comma> as separated for lakh,thousands
+    except ValueError :
+        observation[col.strip()] = [ val, ]   # indian number system uses <comma> as separated for lakh,thousands
 #print(observation)
 
 
@@ -151,10 +154,10 @@ for row in rows[1:-1]:    # 1st or 0th index belongs to header, last row refers 
     observation['date'] = meta_date[0]
     observation['time'] = meta_time[0]
     observation['Name of State / UT'] = str(values_list[1])
-    observation['Total Confirmed cases (Indian National)'] = int(values_list[2])
-    observation['Total Confirmed cases ( Foreign National )'] = int(values_list[3])
-    observation['Cured/Discharged/Migrated'] = int(values_list[4])
-    observation['Death'] = int(values_list[5])
+    observation['Total Confirmed cases (Indian National)'] = (values_list[2])
+    observation['Total Confirmed cases ( Foreign National )'] = (values_list[3])
+    observation['Cured/Discharged/Migrated'] = (values_list[4])
+    observation['Death'] = (values_list[5])
     observations.append(observation)
 #print(observation)
 
