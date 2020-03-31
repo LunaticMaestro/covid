@@ -7,8 +7,14 @@
 # data from `Ministry of Health & Family Welfare India` for COVID-19 spread summary
 # 
 # STANDARDS
-#  - Date_Format  `DD-MM-YYYY`
+#  - Date_Format  `DD Month YYYY`
 #  
+# VERSION 3.0
+#  - 31 MAR 2020
+#  - source site formate changed
+#  - date format changed
+#
+#  - 24hrs time format GMT+5:30
 # VERSION 2.0
 #  -  22 MAR 2020
 #  - Source site formate changed
@@ -71,29 +77,30 @@ observation = dict()
 
 
 # %%
+# Extracting date, time, remakrs
+remark = crude_data.find('div', attrs = {'class': 'status-update'}).find('span').text
+meta_date = re.findall("[0-3][0-9] [a-zA-Z]* 202[0-9]", remark)    # DD-MM-YYYY formation
+meta_time = re.findall(" [0-9][0-9]:[0-9][0-9] ", remark)              # 12-hours HH:MM AM/PM
+observation['date'] = meta_date
+observation['time'] = meta_time
+observation['remark'] = [remark]
+print(observation)
+
+
+# %%
 # Extracting informations of the META_DATA set
 # Block last inspected date 22-03-2020
-block = crude_data.findAll('div', attrs = {'class': 'iblock_text'})
+block = crude_data.find('div', attrs = {'class': 'site-stats-count'}).findAll('li')
 
-for row in block:
-    val = row.find('span').text
-    col = row.find('div').text
+for row in block[:-1]:
+    val = row.find('strong').text
+    col = row.find('span').text
     try:
         observation[col.strip()] = [ int(val.replace(',', '')), ]   # indian number system uses <comma> as separated for lakh,thousands
     except ValueError :
         observation[col.strip()] = [ val, ]   # indian number system uses <comma> as separated for lakh,thousands
-#print(observation)
 
-
-# %%
-# Extracting date, time, remakrs
-remark = crude_data.find('div', attrs = {'class': 'content newtab'}).find('p').text
-meta_date = re.findall("[0-3][0-9][.][0-1][0-9][.]202[0-9]", remark)    # DD-MM-YYYY formation
-meta_time = re.findall("[0-9][0-9]:[0-9][0-9] [AP]M", remark)              # 12-hours HH:MM AM/PM
-observation['date'] = meta_date
-observation['time'] = meta_time
-observation['remark'] = [remark]
-#print(observation)
+print(observation)
 
 
 # %%
@@ -138,13 +145,9 @@ df.tail()
 # 2. Death
 
 # %%
-rows = crude_data.find('div', attrs = {'class': 'content newtab'}).findAll('tr')
-rows[1]
-
-
-# %%
 # Extracting each observation and appending to observations
-rows = crude_data.find('div', attrs = {'class': 'content newtab'}).findAll('tr')
+rows = crude_data.find('section', attrs= {'id': 'state-data'}).find('table', attrs = {'class': 'table table-striped'}).findAll('tr')
+rows[1]
 observations = []
 for row in rows[1:-1]:    # 1st or 0th index belongs to header, last row refers to summed info (total)
     observation = {}
@@ -155,11 +158,10 @@ for row in rows[1:-1]:    # 1st or 0th index belongs to header, last row refers 
     observation['time'] = meta_time[0]
     observation['Name of State / UT'] = str(values_list[1])
     observation['Total Confirmed cases (Indian National)'] = (values_list[2])
-    observation['Total Confirmed cases ( Foreign National )'] = (values_list[3])
-    observation['Cured/Discharged/Migrated'] = (values_list[4])
-    observation['Death'] = (values_list[5])
+    observation['Cured/Discharged/Migrated'] = (values_list[3])
+    observation['Death'] = (values_list[4])
     observations.append(observation)
-#print(observation)
+print(observation)
 
 # %% [markdown]
 #  draw a total day wise results when performing data analysis

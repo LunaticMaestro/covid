@@ -6,6 +6,7 @@
 
 Symbols meanings
 
+# Remaining 38 cases are being assigned to states to initiate contact tracing
 # Few of the new cases have been reassigned States as per latest information 
 * State and District wise details awaited
 # 2nd Death Reported in Delhi is Covid-19 Negative
